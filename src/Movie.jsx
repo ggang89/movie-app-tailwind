@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-export default function Movies({
+export default function Movies({id,
   title,
   rating,
   runtime,
@@ -8,9 +9,13 @@ export default function Movies({
   img,
   year
 }) {
+  console.log(id)
   return (
     <>
-      <p className="font-bold text-2xl">{title}</p>
+      <p className="font-bold text-2xl">
+        <Link to={`movie/${id}`}>{title}</Link>
+        
+      </p>
       <img src={img} alt={title} />
       <p> year : {year}</p>
       <p> rating: ⭐{rating} / 10</p>
@@ -18,13 +23,17 @@ export default function Movies({
       <p>
         Genres:
         {genres.map((g) => (
-          <span className="italic"key={g}> {g}&nbsp;</span>
+          <span className="italic" key={g}>
+            
+            {g}&nbsp;
+          </span>
         ))}
       </p>
     </>
   );
 }
 Movies.propTypes = {
+  id:PropTypes.number.isRequired,
   year:PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
