@@ -9,7 +9,6 @@ function App() {
       "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year"
     );
     const json = await reponse.json();
-    console.log(json);
     setMovies(json.data.movies);
     setLoading(false);
   };
@@ -25,13 +24,14 @@ function App() {
         ) : (
           <>
             {movies.map((m) => (
-              <div key={m.id}>
+              <div className="border w-fit" key={m.id}>
                 <Movies
-                  title={m.title_long}
+                  title={m.title}
                   img={m.medium_cover_image}
                   rating={m.rating}
                   runtime={m.runtime}
                   genres={m.genres}
+                  year={m.year}
                 />
               </div>
             ))}

@@ -2,33 +2,33 @@ import PropTypes from "prop-types";
 
 export default function Movies({
   title,
-  title_long,
   rating,
   runtime,
   genres,
   img,
+  year
 }) {
   return (
     <>
-      <h3 className="font-bold text-2xl">{title_long}</h3>
+      <p className="font-bold text-2xl">{title}</p>
       <img src={img} alt={title} />
-      {/* <p> year : {m.year}</p> */}
+      <p> year : {year}</p>
       <p> rating: ⭐{rating} / 10</p>
       <p> runtime: ⏳ {runtime} min</p>
-      <ul>
+      <p>
         Genres:
         {genres.map((g) => (
-          <li key={g}>&nbsp;{g}</li>
+          <span className="italic"key={g}> {g}&nbsp;</span>
         ))}
-      </ul>
+      </p>
     </>
   );
 }
 Movies.propTypes = {
+  year:PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  title_long: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
-  runtime: PropTypes.string.isRequired,
-  genres: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  runtime: PropTypes.number.isRequired,
+  genres: PropTypes.array.isRequired,
   img: PropTypes.string.isRequired,
 };
