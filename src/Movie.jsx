@@ -9,14 +9,13 @@ export default function Movies({id,
   img,
   year
 }) {
-  console.log(id)
   return (
     <>
-      <p className="font-bold text-2xl">
+      <img className="relative left-12 bottom-10" src={img} alt={title} />
+      <p className="text-center font-bold text-2xl hover:underline ">
         <Link to={`movie/${id}`}>{title}</Link>
-        
       </p>
-      <img src={img} alt={title} />
+    <br/>
       <p> year : {year}</p>
       <p> rating: ⭐{rating} / 10</p>
       <p> runtime: ⏳ {runtime} min</p>
@@ -24,8 +23,7 @@ export default function Movies({id,
         Genres:
         {genres.map((g) => (
           <span className="italic" key={g}>
-            
-            {g}&nbsp;
+            &nbsp; {g}&nbsp;
           </span>
         ))}
       </p>

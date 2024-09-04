@@ -17,14 +17,21 @@ export default function Home() {
   }, []);
   return (
     <>
-      <h1 className="text-red-600 text-3xl font-bold">Movies</h1>
-      <div>
+      <h1 className=" bg-black text-red-700 text-3xl font-bold p-2">
+        📽 MOVIES
+      </h1>
+      <div className=" flex flex-wrap justify-center bg-black text-white p-3">
         {loading ? (
-          <h1>Loading ..🐧...🐧..</h1>
+          <h1 className="text-center text-4xl font-bold">
+            Loading ..🐧...🐧..
+          </h1>
         ) : (
           <>
             {movies.map((m) => (
-              <div className="border w-fit" key={m.id}>
+              <div
+                className=" shadow-lg shadow-gray-400 w-96 p-5 m-10 hover:bg-opacity-5"
+                key={m.id}
+              >
                 <Movies
                   id={m.id}
                   title={m.title}
@@ -42,5 +49,3 @@ export default function Home() {
     </>
   );
 }
-
-

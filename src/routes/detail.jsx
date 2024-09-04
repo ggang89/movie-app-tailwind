@@ -28,8 +28,8 @@ export default function Detail() {
           className="bg-cover "
           style={{ backgroundImage: `url(${movie.background_image})` }}
         >
-          <div className="bg-black	w-2/5 text-white p-10 m-auto flex flex-col">
-            <p className="text-5xl font-extrabold text-center">{movie.title}</p>
+          <div className="bg-black bg-opacity-30	w-2/5 text-white p-10 m-auto flex flex-col">
+            <p className="text-5xl font-extrabold text-center italic">{movie.title}</p>
             <br />
             <img src={movie.medium_cover_image} alt={movie.title} />
             <br />
@@ -41,11 +41,22 @@ export default function Detail() {
             <p className=" font-semibold flex">
               ▫ genres:
               {movie.genres.map((g) => (
-                <span key={g}> {g}</span>
+                <span key={g}>&nbsp; {g}</span>
               ))}
             </p>
             <p className=" font-semibold flex">▫ Description</p>
-            <p className="italic flex">{movie.description_full}</p>
+            <p className="italic flex p-3">
+              {movie.description_full ? (
+                movie.description_full
+              ) : (
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                  in, corrupti expedita quam id libero, nobis architecto,
+                  officiis inventore dicta doloremque excepturi quod suscipit
+                  incidunt temporibus obcaecati explicabo voluptatem aperiam.
+                </p>
+              )}
+            </p>
           </div>
         </div>
       )}
