@@ -10,7 +10,7 @@ export default function Home() {
     );
     const json = await reponse.json();
     setMovies(json.data.movies);
-    setLoading(false);
+   setLoading(false);
   };
   useEffect(() => {
     getMovies();
@@ -20,11 +20,13 @@ export default function Home() {
       <h1 className=" bg-black text-red-700 text-3xl font-bold p-2">
         📽 MOVIES
       </h1>
-      <div className=" flex flex-wrap justify-center bg-black text-white p-3">
+      <div className=" h-vh flex flex-wrap justify-center bg-black text-white p-3">
         {loading ? (
-          <h1 className="text-center text-4xl font-bold">
-            Loading ..🐧...🐧..
-          </h1>
+          <div className="h-dvh flex items-center  bg-black text-center text-4xl font-bold">
+            <h1 className="text-center text-4xl font-bold">
+              ..🐧...🐧...Loading ..🐧...🐧..
+            </h1>
+          </div>
         ) : (
           <>
             {movies.map((m) => (

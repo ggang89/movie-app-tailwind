@@ -28,35 +28,47 @@ export default function Detail() {
           className="bg-cover "
           style={{ backgroundImage: `url(${movie.background_image})` }}
         >
-          <div className="bg-black bg-opacity-30	w-2/5 text-white p-10 m-auto flex flex-col">
-            <p className="text-5xl font-extrabold text-center italic">{movie.title}</p>
-            <br />
+          <div className="bg-black bg-opacity-30	w-100 h-dvh text-white p-10 m-auto flex ">
             <img src={movie.medium_cover_image} alt={movie.title} />
             <br />
-            <p className=" font-semibold flex">▫ rating: {movie.rating} /10</p>
-            <p className=" font-semibold flex">
-              ▫ runtime: {movie.runtime} min
-            </p>
-            <p className=" font-semibold flex">▫ year: {movie.year}</p>
-            <p className=" font-semibold flex">
-              ▫ genres:
-              {movie.genres.map((g) => (
-                <span key={g}>&nbsp; {g}</span>
-              ))}
-            </p>
-            <p className=" font-semibold flex">▫ Description</p>
-            <p className="italic flex p-3">
-              {movie.description_full ? (
-                movie.description_full
-              ) : (
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-                  in, corrupti expedita quam id libero, nobis architecto,
-                  officiis inventore dicta doloremque excepturi quod suscipit
-                  incidunt temporibus obcaecati explicabo voluptatem aperiam.
-                </p>
-              )}
-            </p>
+            <div className="p-10 leading-8">
+              <p className="text-5xl font-extrabold text-center italic">
+                {movie.title}
+              </p>
+              <br />
+              <p className=" font-semibold flex">
+                ▫ rating: {movie.rating} /10
+              </p>
+              <p className=" font-semibold flex">
+                ▫ runtime: {movie.runtime} min
+              </p>
+              <p className=" font-semibold flex">▫ year: {movie.year}</p>
+              <p className=" font-semibold flex">
+                ▫ genres:&nbsp;
+                {movie.genres.map((g) => (
+                  <span
+                    key={g}
+                    className="bg-red-700 rounded-xl m-0.5 pr-1.5"
+                  >
+                    &nbsp; {g}&nbsp;
+                  </span>
+                ))}
+              </p>
+              <p className=" font-semibold flex">▫ Description</p>
+              <p className="italic flex p-3">
+                {movie.description_full ? (
+                  movie.description_full
+                ) : (
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ipsam in, corrupti expedita quam id libero, nobis
+                    architecto, officiis inventore dicta doloremque excepturi
+                    quod suscipit incidunt temporibus obcaecati explicabo
+                    voluptatem aperiam.
+                  </p>
+                )}
+              </p>
+            </div>
           </div>
         </div>
       )}
