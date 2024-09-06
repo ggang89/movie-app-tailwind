@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Movies from "../components/Movie";
+import { Link } from "react-router-dom";
 
 
 export default function Home() {
@@ -30,7 +31,6 @@ export default function Home() {
   })
   return (
     <>
-      
       <div className=" h-vh flex flex-wrap justify-center bg-black text-white p-3">
         {loading ? (
           <div className="h-dvh flex items-center  bg-black text-center text-4xl font-bold">
@@ -48,8 +48,8 @@ export default function Home() {
                   bg-[url('./image/bluey.jpg')]"
                 >
                   <div className="absolute bottom-0 w-2/4 h-2/5 bg-black opacity-70 leading-7 p-5  text-white">
-                    <p className="text-5xl font-extrabold  italic pb-3">
-                      {m.title}
+                    <p className="text-5xl font-extrabold  italic pb-3 hover:underline ">
+                      <Link to={`movie/${m.id}`}>{m.title}</Link>
                     </p>
                     <p className=" font-semibold text-xl flex">
                       💥{m.year} &nbsp;⭐{m.rating}
@@ -75,9 +75,10 @@ export default function Home() {
             </div>
             <div className="border h-80 ">
               <h3 className="w-100 bg-slate-600 ">평점순</h3>
+
               {movies.map((m) => (
                 <div
-                  className=" shadow-lg shadow-gray-400 w-48 p-5 m-10 hover:bg-opacity-5"
+                  className=" shadow-lg shadow-gray-400 w-48 p-5 m-10 hover:bg-opacity-5 "
                   key={m.id}
                 >
                   <Movies

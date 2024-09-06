@@ -17,9 +17,9 @@ export default function Latest() {
     getMovies();
   },[]);
   return (
-    <div className=" h-vh  flex justify-center bg-black text-white p-3 ">
+    <div className=" h-vh flex justify-center bg-black text-white p-3 ">
       {loading ? (
-        <div className="h-dvh flex items-center  bg-black text-center text-4xl font-bold">
+        <div className="h-dvh flex items-center bg-black text-center text-4xl font-bold">
           <p className="text-center text-4xl font-bold">Loading...🐧...</p>
         </div>
       ) : (

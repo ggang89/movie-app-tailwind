@@ -17,7 +17,7 @@ export default function Layout() {
               최신순
             </span>
           </Link>
-          <Link>
+          <Link to="/rate">
             <span className="text-slate-300 text-lg p-3 pl-0  hover:text-yellow-300">
               평점순
             </span>
