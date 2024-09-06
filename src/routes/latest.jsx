@@ -32,7 +32,7 @@ export default function Latest() {
                 rating={m.rating}
                 runtime={m.runtime}
                 genres={m.genres}
-                img={m.medium.cover.image}
+                img={m.medium_cover_image}
               />
             </div>
           ))}
