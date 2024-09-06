@@ -11,17 +11,20 @@ export default function LatestMovies({
 }) {
   return (
     <>
+     
       <img className="relative left-12 bottom-10" src={img} alt={title} />
-      <p className="text-center font-bold text-2xl hover:underline ">
-        <Link to={`movie/${id}`}>{title}</Link>
+      <p className="italic text-center font-bold text-2xl hover:underline ">
+        <Link to={`/movie/${id}`}>{title}</Link>
       </p>
       <br />
-      <p> rating: ⭐{rating} / 10</p>
-      <p> runtime: ⏳ {runtime} min</p>
-      <p>
+      <p  className="text-center">
+        rating: ⭐{rating} / 10 &emsp;&emsp;runtime: ⏳ {runtime} min
+      </p>
+      
+      <p className="pl-8 flex flex-wrap">
         Genres:
         {genres.map((g) => (
-          <span className="italic" key={g}>
+          <span className="italic bg-red-700 rounded-xl m-0.5 pr-1 align-middle" key={g}>
             &nbsp; {g}&nbsp;
           </span>
         ))}

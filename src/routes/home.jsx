@@ -30,23 +30,24 @@ export default function Home() {
   })
   return (
     <>
-      <h1 className=" bg-black text-red-700 text-3xl font-bold p-2">
-        📽 MOVIES
-        <Link to="/">
-          <span className="text-slate-300 text-lg p-3  hover:text-yellow-300">
-            HOME
+      <div>
+        <h1 className=" bg-black text-red-700 text-3xl font-bold p-2">
+          📽 MOVIES
+          <Link to="/">
+            <span className="text-slate-300 text-lg p-3  hover:text-yellow-300">
+              HOME
+            </span>
+          </Link>
+          <Link to="/latest">
+            <span className="text-slate-300 text-lg p-3 pl-0 hover:text-yellow-300">
+              최신순
+            </span>
+          </Link>
+          <span className="text-slate-300 text-lg p-3 pl-0  hover:text-yellow-300">
+            평점순
           </span>
-        </Link>
-        <Link to="/latest">
-          <span className="text-slate-300 text-lg p-3 pl-0 hover:text-yellow-300">
-            최신순
-          </span>
-        </Link>
-        <span className="text-slate-300 text-lg p-3 pl-0  hover:text-yellow-300">
-          평점순
-        </span>
-      </h1>
-      <div></div>
+        </h1>
+      </div>
       <div className=" h-vh flex flex-wrap justify-center bg-black text-white p-3">
         {loading ? (
           <div className="h-dvh flex items-center  bg-black text-center text-4xl font-bold">
@@ -57,34 +58,32 @@ export default function Home() {
         ) : (
           <div className="flex-wrap ">
             <div>
-              
               {top.map((m) => (
                 <div
                   key={m.id}
                   className="bg-cover w-screen h-dvh relative
                   bg-[url('./image/bluey.jpg')]"
                 >
-                    <div className="absolute bottom-0 w-2/4 h-2/5 bg-black opacity-70 leading-7 p-5  text-white">
-                   
+                  <div className="absolute bottom-0 w-2/4 h-2/5 bg-black opacity-70 leading-7 p-5  text-white">
                     <p className="text-5xl font-extrabold  italic pb-3">
-                        {m.title}
-                      </p>
-                      <p className=" font-semibold text-xl flex">
-                        💥{m.year} &nbsp;⭐{m.rating}
-                      </p>
-                      <p className=" flex">
-                        &nbsp;
-                        {m.genres.map((g) => (
-                          <span
-                            key={g}
-                            className="bg-red-700 rounded-xl m-0.5 pr-1.5"
-                          >
-                            &nbsp; {g}&nbsp;
-                          </span>
-                        ))}
-                      </p>
-                      <p className="  flex italic">{m.summary}</p>
-                    </div>
+                      {m.title}
+                    </p>
+                    <p className=" font-semibold text-xl flex">
+                      💥{m.year} &nbsp;⭐{m.rating}
+                    </p>
+                    <p className=" flex">
+                      &nbsp;
+                      {m.genres.map((g) => (
+                        <span
+                          key={g}
+                          className="bg-red-700 rounded-xl m-0.5 pr-1.5"
+                        >
+                          &nbsp; {g}&nbsp;
+                        </span>
+                      ))}
+                    </p>
+                    <p className="  flex italic">{m.summary}</p>
+                  </div>
                 </div>
               ))}
             </div>

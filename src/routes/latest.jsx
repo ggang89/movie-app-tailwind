@@ -6,38 +6,45 @@ export default function Latest() {
   const [movies, setMovies] = useState([]);
   const getMovies = async () => {
     const response = await fetch(
-      "https://yts.mx/api/v2/list_movies.json?sort_by=year&&limit=10"
+      "https://yts.mx/api/v2/list_movies.json?sort_by=year&&limit=20"
     );
     const json = await response.json();
     console.log(json.data.movies);
-    setMovies(json.data.movies);//왜 안나와
+    setMovies(json.data.movies);
     setLoading(false);
   };
   useEffect(() => {
     getMovies();
   },[]);
   return (
-    <>
+    <div className=" h-vh  flex justify-center bg-black text-white p-3 ">
       {loading ? (
-        <div>
-          <p>Loading...🐧...</p>
+        <div className="h-dvh flex items-center  bg-black text-center text-4xl font-bold">
+          <p className="text-center text-4xl font-bold">Loading...🐧...</p>
         </div>
       ) : (
         <>
-          {movies.map((m) => (
-            <div key={m.id}>
-              <LatestMovies
-                id={m.id}
-                title={m.title}
-                rating={m.rating}
-                runtime={m.runtime}
-                genres={m.genres}
-                img={m.medium_cover_image}
-              />
-            </div>
-          ))}
+        
+
+          <div className="  flex flex-wrap justify-center">
+            {movies.map((m) => (
+              <div
+                key={m.id}
+                className="shadow-lg shadow-gray-400 w-1/4 p-3 m-10 "
+              >
+                <LatestMovies
+                  id={m.id}
+                  title={m.title}
+                  rating={m.rating}
+                  runtime={m.runtime}
+                  genres={m.genres}
+                  img={m.medium_cover_image}
+                />
+              </div>
+            ))}
+          </div>
         </>
       )}
-    </>
+    </div>
   );
 }
