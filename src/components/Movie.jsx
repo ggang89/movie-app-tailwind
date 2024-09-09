@@ -7,32 +7,34 @@ export default function Movies({id,
   runtime,
   genres,
   img,
-  year
+  
 }) {
   return (
     <>
-      <img className="relative left-12 bottom-10" src={img} alt={title} />
-      <p className="text-center font-bold text-2xl hover:underline ">
+      <img className="pb-1" src={img} alt={title} />
+      <p className="text-center font-bold text-xl hover:underline ">
         <Link to={`movie/${id}`}>{title}</Link>
       </p>
-    <br/>
-      <p> year : {year}</p>
-      <p> rating: ⭐{rating} / 10</p>
-      <p> runtime: ⏳ {runtime} min</p>
-      <p>
-        Genres:
+      {/* <p className="text-sm text-center"> year : {year}</p> */}
+      
+      <p className="text-sm text-center">
+        ⭐{rating} ⏳ {runtime} min
+      </p>
+      <>
         {genres.map((g) => (
-          <span className="italic" key={g}>
+          <span
+            className="italic text-xs align-middle bg-red-500 rounded-xl m-0.5 pr-1.5"
+            key={g}
+          >
             &nbsp; {g}&nbsp;
           </span>
         ))}
-      </p>
+      </>
     </>
   );
 }
 Movies.propTypes = {
   id:PropTypes.number.isRequired,
-  year:PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   runtime: PropTypes.number.isRequired,
