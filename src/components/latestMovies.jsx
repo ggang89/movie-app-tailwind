@@ -19,6 +19,7 @@ export default function LatestMovies({
       <br />
       <p  className="text-center">
         rating: ⭐{rating} / 10 &emsp;&emsp;runtime: ⏳ {runtime} min
+        
       </p>
       
       <p className="pl-8 flex flex-wrap">

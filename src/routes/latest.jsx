@@ -24,8 +24,6 @@ export default function Latest() {
         </div>
       ) : (
         <>
-        
-
           <div className="  flex flex-wrap justify-center">
             {movies.map((m) => (
               <div
@@ -34,7 +32,7 @@ export default function Latest() {
               >
                 <LatestMovies
                   id={m.id}
-                  title={m.title}
+                  title={m.title_long}
                   rating={m.rating}
                   runtime={m.runtime}
                   genres={m.genres}
