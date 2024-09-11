@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { Virtual, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Virtual, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
+import "swiper/css/virtual";
 import "swiper/css/navigation";
 import Movies from "./Movie";
+//import autoprefixer from "autoprefixer";
 
 export default function LatestSlides() {
  
@@ -30,36 +31,39 @@ export default function LatestSlides() {
         <h1>loading...</h1>
       ) : (
         <Swiper
-          width={600}
-          //height={800}
-          modules={[Virtual, Navigation, Pagination]}
+          width={800}
+          autoHeight={true}
+          modules={[Autoplay, Virtual, Navigation]}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           scrollbar={{ draggable: true }}
           slidesPerView={4}
-          autoplay:true
+          observer={true}
           centeredSlides={true}
           spaceBetween={20}
           navigation={true}
-          loop={true}
+          //Autoplay
           virtual
+          style={{ paddingTop: "30px", paddingBottom: "80px" }}
         >
           {ratingMovies.map((m) => (
             <SwiperSlide
-              className="shadow-lg shadow-gray-700 w-1/4 p-3"
+              //style={{ width: "fit-content" }}
+              className="shadow-md shadow-gray-100  flex justify-center"
               key={m.id}
             >
-              {/* <div>
-                <p>{m.title}</p>
-                <img src={m.medium_cover_image} alt={m.title} />
-              </div> */}
-              <Movies
-                id={m.id}
-                title={m.title}
-                img={m.medium_cover_image}
-                rating={m.rating}
-                runtime={m.runtime}
-                genres={m.genres}
-             
-              />
+              <div className="w-[150px] h-[300px] flex flex-wrap justify-center ">
+                <Movies
+                  id={m.id}
+                  title={m.title}
+                  img={m.medium_cover_image}
+                  rating={m.rating}
+                  runtime={m.runtime}
+                  genres={m.genres}
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

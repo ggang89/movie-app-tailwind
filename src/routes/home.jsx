@@ -100,8 +100,8 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="m-1 h-96">
-              <h1 className="ml-2 text-center w-16 border rounded-full">
+            <div className="m-3 h-96">
+              <h1 className="ml-5 text-center w-16 border rounded-full">
                 최신순
               </h1>
               <LatestSlides />

@@ -17,10 +17,10 @@ export default function Movies({id,
       </p>
       {/* <p className="text-sm text-center"> year : {year}</p> */}
       
-      <p className="text-sm text-center">
+      <p className="text-xs text-center">
         ⭐{rating} ⏳ {runtime} min
       </p>
-      <>
+      <div>
         {genres.map((g) => (
           <span
             className="italic text-xs align-middle bg-red-500 rounded-xl m-0.5 pr-1.5"
@@ -29,7 +29,7 @@ export default function Movies({id,
             &nbsp; {g}&nbsp;
           </span>
         ))}
-      </>
+      </div>
     </>
   );
 }
