@@ -54,7 +54,7 @@ export default function Home() {
 
   return (
     <>
-      <div className=" h-vh flex flex-wrap justify-center bg-black text-white p-3">
+      <div className=" h-vh flex flex-wrap justify-center bg-black text-white ">
         {loading ? (
           <div className="h-dvh flex items-center  bg-black text-center text-4xl font-bold">
             <h1 className="text-center text-4xl font-bold">
@@ -125,7 +125,7 @@ export default function Home() {
               </div> */}
             </div>
 
-            <div className="border h-80 ">
+            <div className=" m-3  h-96">
               <h3 className="ml-2 text-center w-16 border rounded-full">
                 평점순
               </h3>

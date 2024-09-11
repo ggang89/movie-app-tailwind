@@ -32,7 +32,6 @@ export default function LatestSlides() {
       ) : (
         <Swiper
           width={800}
-          autoHeight={true}
           modules={[Autoplay, Virtual, Navigation]}
           autoplay={{
             delay: 2000,
@@ -44,17 +43,15 @@ export default function LatestSlides() {
           centeredSlides={true}
           spaceBetween={20}
           navigation={true}
-          //Autoplay
           virtual
           style={{ paddingTop: "30px", paddingBottom: "80px" }}
         >
           {ratingMovies.map((m) => (
             <SwiperSlide
-              //style={{ width: "fit-content" }}
-              className="shadow-md shadow-gray-100  flex justify-center"
+              className="shadow-md shadow-gray-100 h-72 flex justify-center"
               key={m.id}
             >
-              <div className="w-[150px] h-[300px] flex flex-wrap justify-center ">
+              <div className="w-[150px] flex flex-wrap  justify-center ">
                 <Movies
                   id={m.id}
                   title={m.title}

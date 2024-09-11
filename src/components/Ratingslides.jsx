@@ -1,10 +1,10 @@
 import  {  useState, useEffect } from "react";
-import { Virtual, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Virtual, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
+import "swiper/css/virtual";
 import "swiper/css/navigation";
 import Movies from "./Movie";
 
@@ -38,32 +38,39 @@ export default function RatingSlides() {
         <h1>loading...</h1>
       ) : (
         <Swiper
-          width={600}
-          modules={[Virtual, Navigation, Pagination]}
+          width={800}
+         
+          modules={[Autoplay, Virtual, Navigation]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           scrollbar={{ draggable: true }}
-          slidesPerView={5}
-          autoplay:true
+          slidesPerView={4}
+          observer={true}
           centeredSlides={true}
           spaceBetween={20}
           navigation={true}
-          loop={true}
+        
           virtual
+          style={{ paddingTop: "30px", paddingBottom: "80px" }}
         >
           {ratingMovies.map((m) => (
-            <SwiperSlide key={m.id}>
-              {/* <div>
-                <p>{m.title}</p>
-                <img src={m.medium_cover_image} alt={m.title} />
-              </div> */}
-              <Movies
-                id={m.id}
-                title={m.title}
-                img={m.medium_cover_image}
-                rating={m.rating}
-                runtime={m.runtime}
-                genres={m.genres}
-                year={m.year}
-              />
+            <SwiperSlide
+              key={m.id}
+              className="shadow-md shadow-gray-100  flex justify-center"
+            >
+              <div className="w-[150px] h-[300px] flex flex-wrap justify-center ">
+                <Movies
+                  id={m.id}
+                  title={m.title}
+                  img={m.medium_cover_image}
+                  rating={m.rating}
+                  runtime={m.runtime}
+                  genres={m.genres}
+                  year={m.year}
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

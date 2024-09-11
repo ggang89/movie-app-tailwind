@@ -15,12 +15,11 @@ export default function Movies({id,
       <p className="text-center font-bold text-xl hover:underline ">
         <Link to={`movie/${id}`}>{title}</Link>
       </p>
-      {/* <p className="text-sm text-center"> year : {year}</p> */}
       
       <p className="text-xs text-center">
         ⭐{rating} ⏳ {runtime} min
       </p>
-      <div>
+      <div className="flex-wrap flex">
         {genres.map((g) => (
           <span
             className="italic text-xs align-middle bg-red-500 rounded-xl m-0.5 pr-1.5"
