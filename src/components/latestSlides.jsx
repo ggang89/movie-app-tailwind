@@ -10,7 +10,6 @@ import Movies from "./Movie";
 //import autoprefixer from "autoprefixer";
 
 export default function LatestSlides() {
- 
   const [loading, setLoading] = useState(true);
   const [ratingMovies, setRatingMovies] = useState([]);
   const getRatingMovies = async () => {
@@ -30,8 +29,8 @@ export default function LatestSlides() {
       {loading ? (
         <h1>loading...</h1>
       ) : (
-        <Swiper
-          width={800}
+          <Swiper
+            width={800}
           modules={[Autoplay, Virtual, Navigation]}
           autoplay={{
             delay: 2000,
@@ -44,6 +43,7 @@ export default function LatestSlides() {
           spaceBetween={20}
           navigation={true}
           virtual
+          className="mySwiper"
           style={{ paddingTop: "30px", paddingBottom: "80px" }}
         >
           {ratingMovies.map((m) => (
@@ -51,7 +51,7 @@ export default function LatestSlides() {
               className="shadow-md shadow-gray-100 h-72 flex justify-center"
               key={m.id}
             >
-              <div className="w-[150px] flex flex-wrap  justify-center ">
+              <div className="w-[150px] h-64 flex flex-wrap justify-center ">
                 <Movies
                   id={m.id}
                   title={m.title}

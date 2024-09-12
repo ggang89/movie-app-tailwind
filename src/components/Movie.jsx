@@ -11,7 +11,7 @@ export default function Movies({id,
 }) {
   return (
     <>
-      <img className="pb-1" src={img} alt={title} />
+      <img className="pb-1 h-48" src={img} alt={title} />
       <p className="text-center font-bold text-xl hover:underline ">
         <Link to={`movie/${id}`}>{title}</Link>
       </p>

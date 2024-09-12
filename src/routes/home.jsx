@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Movies from "../components/Movie";
+// import Movies from "../components/Movie";
 import { Link } from "react-router-dom";
-import Slides from "../components/Ratingslides";
+// import Slides from "../components/Ratingslides";
 import RatingSlides from "../components/Ratingslides";
 import LatestSlides from "../components/latestSlides";
 // import { Virtual, Navigation, Pagination } from "swiper/modules";
@@ -15,19 +15,19 @@ import LatestSlides from "../components/latestSlides";
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [top, setTop] = useState([]);
-  const [ratingMovies, setRatingMovies] = useState([]);
-  const [latestMovies, setLatestMovies] = useState([]);
-  const getRatingMovies = async () => {
-    const response = await fetch(
-      "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year"
-    );
-    const json = await response.json();
-    setRatingMovies(json.data.movies);
-    setLoading(false);
-  };
-  useEffect(() => {
-    getRatingMovies();
-  }, []);
+  // const [ratingMovies, setRatingMovies] = useState([]);
+  // const [latestMovies, setLatestMovies] = useState([]);
+  // const getRatingMovies = async () => {
+  //   const response = await fetch(
+  //     "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year"
+  //   );
+  //   const json = await response.json();
+  //   setRatingMovies(json.data.movies);
+  //   setLoading(false);
+  // };
+  // useEffect(() => {
+  //   getRatingMovies();
+  // }, []);
 
   const getOneMovie = async () => {
     const response = await fetch(
@@ -35,22 +35,23 @@ export default function Home() {
     );
     const json = await response.json();
     setTop(json.data.movies);
-    console.log(json);
+    setLoading(false);
+    
   };
   useEffect(() => {
     getOneMovie();
   });
-  const getLatestMovie = async () => {
-    const response = await fetch(
-      "https://yts.mx/api/v2/list_movies.json?sort_by=year&&limit=20"
-    );
-    const json = await response.json();
-    setLatestMovies(json.data.movies);
-    setLoading(false);
-  };
-  useEffect(() => {
-    getLatestMovie();
-  });
+  // const getLatestMovie = async () => {
+  //   const response = await fetch(
+  //     "https://yts.mx/api/v2/list_movies.json?sort_by=year&&limit=20"
+  //   );
+  //   const json = await response.json();
+  //   setLatestMovies(json.data.movies);
+  //   setLoading(false);
+  // };
+  // useEffect(() => {
+  //   getLatestMovie();
+  // });
 
   return (
     <>
@@ -67,8 +68,8 @@ export default function Home() {
               {top.map((m) => (
                 <div
                   key={m.id}
-                  className="bg-cover w-screen h-dvh relative
-                  bg-[url('./image/bluey.jpg')]"
+                  className="bg-cover w-screen h-dvh relative"
+                  style={{ backgroundImage: `url(${m.background_image})` }}
                 >
                   <div className="absolute bottom-0 w-2/4 h-2/5 bg-black opacity-70 leading-7 p-5  text-white">
                     <h1 className="text-5xl font-bold italic pb-3 hover:underline flex">
@@ -88,7 +89,7 @@ export default function Home() {
                       {m.genres.map((g) => (
                         <span
                           key={g}
-                          className="bg-red-700 rounded-xl m-0.5 pr-1.5"
+                          className="bg-red-700 rounded-xl m-0.5 pr-1.5 h-5 text-xs"
                         >
                           &nbsp; {g}&nbsp;
                         </span>
