@@ -5,7 +5,6 @@ export default function Movies({id,
   title,
   rating,
   runtime,
-  genres,
   img,
   
 }) {
@@ -19,16 +18,7 @@ export default function Movies({id,
       <p className="text-xs text-center">
         ⭐{rating} ⏳ {runtime} min
       </p>
-      <div className="flex-wrap flex">
-        {/* {genres.map((g) => (
-          <span
-            className="italic text-xs align-middle bg-red-500 rounded-xl m-0.5 pr-1.5"
-            key={g}
-          >
-            &nbsp; {g}&nbsp;
-          </span>
-        ))} */}
-      </div>
+      
     </div>
   );
 }

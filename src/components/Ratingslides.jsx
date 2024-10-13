@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
-import { Autoplay, Virtual, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Movies from "./Movie";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/virtual";
-import "swiper/css/navigation";
 
 export default function RatingSlides() {
   const [loading, setLoading] = useState(true);
@@ -36,12 +29,10 @@ export default function RatingSlides() {
             >
               <div className="w-[150px] h-[300px] flex flex-wrap justify-center ">
                 <Movies
-                 
                   title={m.title}
                   img={m.medium_cover_image}
                   rating={m.rating}
                   runtime={m.runtime}
-                
                 />
               </div>
             </div>
