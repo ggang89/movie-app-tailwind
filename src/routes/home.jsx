@@ -1,33 +1,11 @@
 import { useState, useEffect } from "react";
-// import Movies from "../components/Movie";
 import { Link } from "react-router-dom";
-// import Slides from "../components/Ratingslides";
 import RatingSlides from "../components/Ratingslides";
-import LatestSlides from "../components/latestSlides";
-// import { Virtual, Navigation, Pagination } from "swiper/modules";
-// import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-// import "swiper/css";
-// import "swiper/css/pagination";
-// import "swiper/css/navigation";
+import LatestSlides2 from "../components/LatestSlides2";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [top, setTop] = useState([]);
-  // const [ratingMovies, setRatingMovies] = useState([]);
-  // const [latestMovies, setLatestMovies] = useState([]);
-  // const getRatingMovies = async () => {
-  //   const response = await fetch(
-  //     "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year"
-  //   );
-  //   const json = await response.json();
-  //   setRatingMovies(json.data.movies);
-  //   setLoading(false);
-  // };
-  // useEffect(() => {
-  //   getRatingMovies();
-  // }, []);
 
   const getOneMovie = async () => {
     const response = await fetch(
@@ -36,22 +14,10 @@ export default function Home() {
     const json = await response.json();
     setTop(json.data.movies);
     setLoading(false);
-    
   };
   useEffect(() => {
     getOneMovie();
   });
-  // const getLatestMovie = async () => {
-  //   const response = await fetch(
-  //     "https://yts.mx/api/v2/list_movies.json?sort_by=year&&limit=20"
-  //   );
-  //   const json = await response.json();
-  //   setLatestMovies(json.data.movies);
-  //   setLoading(false);
-  // };
-  // useEffect(() => {
-  //   getLatestMovie();
-  // });
 
   return (
     <>
@@ -68,24 +34,21 @@ export default function Home() {
               {top.map((m) => (
                 <div
                   key={m.id}
-                  className="bg-cover w-screen h-dvh relative"
+                  className="bg-cover w-svw h-dvh relative "
                   style={{ backgroundImage: `url(${m.background_image})` }}
                 >
-                  <div className="absolute bottom-0 w-2/4 h-2/5 bg-black opacity-70 leading-7 p-5  text-white">
+                  <div className="absolute left-3 bottom-1 w-2/4 h-[200px] bg-black opacity-80 leading-7 py-5 px-10 text-white">
                     <h1 className="text-5xl font-bold italic pb-3 hover:underline flex">
                       <img
-                        className="pr-4"
+                        className="pr-4 h-[80px] "
                         src={m.small_cover_image}
                         alt={m.title}
                       />
                       <Link to={`movie/${m.id}`}>{m.title}</Link>
                     </h1>
-
-                    <p className=" font-semibold text-xl flex">
-                      💥{m.year} &nbsp;⭐{m.rating}
-                    </p>
-                    <p className=" flex">
-                      &nbsp;
+                    <br />
+                    <div className=" font-semibold text-xl flex pl-16">
+                      💥{m.year} &nbsp;⭐{m.rating} &nbsp;
                       {m.genres.map((g) => (
                         <span
                           key={g}
@@ -94,62 +57,30 @@ export default function Home() {
                           &nbsp; {g}&nbsp;
                         </span>
                       ))}
-                    </p>
-                    <p className="  flex italic">{m.summary}</p>
+                    </div>
                   </div>
+                  <img
+                    className="w-2/5 h-[600px] absolute right-10 bottom-5"
+                    src={m.large_cover_image}
+                    alt={m.title}
+                  />
                 </div>
               ))}
             </div>
 
             <div className="m-3 h-96">
-              <h1 className="ml-5 text-center w-16 border rounded-full">
-                최신순
+              <h1 className="ml-5 mb-3 text-center w-[160px] border rounded-full">
+                <Link to="/latest">최신순 more ▶</Link>
               </h1>
-              <LatestSlides />
-              {/* <div className=" ">
-                {latestMovies.map((m) => (
-                  <div
-                    className=" shadow-lg shadow-gray-400 w-40 p-3 m-5  "
-                    key={m.id}
-                  >
-                    <Movies
-                      id={m.id}
-                      title={m.title}
-                      img={m.medium_cover_image}
-                      rating={m.rating}
-                      runtime={m.runtime}
-                      genres={m.genres}
-                      year={m.year}
-                    />
-                  </div>
-                ))}
-              </div> */}
+              <LatestSlides2 />
             </div>
 
             <div className=" m-3  h-96">
-              <h3 className="ml-2 text-center w-16 border rounded-full">
-                평점순
+              <h3 className="ml-5 mb-3 text-center w-[160px] border rounded-full">
+                <Link to="/latest">평점순 more ▶</Link>
               </h3>
 
               <RatingSlides />
-              {/* <>
-                {ratingMovies.map((m) => (
-                  <div
-                    className=" shadow-lg shadow-gray-400 w-40 p-5 m-10 hover:bg-opacity-5 "
-                    key={m.id}
-                  >
-                    <Movies
-                      id={m.id}
-                      title={m.title}
-                      img={m.medium_cover_image}
-                      rating={m.rating}
-                      runtime={m.runtime}
-                      genres={m.genres}
-                      year={m.year}
-                    />
-                  </div>
-                ))}
-              </> */}
             </div>
           </div>
         )}
